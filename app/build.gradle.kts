@@ -1,9 +1,11 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
-    id("org.jetbrains.kotlin.kapt")
+    id("com.google.devtools.ksp") version "2.0.21-1.0.25"
     id("com.google.gms.google-services")
 }
+
+
 
 
 android {
@@ -62,8 +64,9 @@ dependencies {
 
     //room
     implementation("androidx.room:room-runtime:2.6.1")
-    kapt("androidx.room:room-compiler:2.6.1")
+    ksp("androidx.room:room-compiler:2.6.1")
     implementation("androidx.room:room-ktx:2.6.1")
+
 
     //retrofit
     implementation("com.squareup.retrofit2:retrofit:2.11.0")
