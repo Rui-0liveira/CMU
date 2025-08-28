@@ -3,6 +3,7 @@ plugins {
     alias(libs.plugins.kotlin.android)
     id("com.google.devtools.ksp") version "2.0.21-1.0.25"
     id("com.google.gms.google-services")
+    id("org.jetbrains.kotlin.plugin.compose")
 }
 
 
@@ -39,6 +40,7 @@ android {
         jvmTarget = "11"
     }
     buildFeatures {
+        compose = true
         viewBinding = true
     }
 }
@@ -88,5 +90,9 @@ dependencies {
     implementation("androidx.compose.material3:material3:1.3.0")
     implementation("androidx.navigation:navigation-compose:2.8.3")
 
+    // Compose extra
+    implementation("androidx.compose.foundation:foundation:1.7.4")
+    implementation("androidx.compose.ui:ui-tooling-preview:1.7.4")
+    debugImplementation("androidx.compose.ui:ui-tooling:1.7.4")
 
 }
