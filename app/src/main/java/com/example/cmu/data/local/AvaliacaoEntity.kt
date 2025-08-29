@@ -11,5 +11,6 @@ data class AvaliacaoEntity(
     val estrelas: Int,
     val comentario: String,
     val fotoPath: String? = null,  // caminho local da imagem
-    val timestamp: Long = System.currentTimeMillis()
+    val timestamp: Long = System.currentTimeMillis(),
+    val synced: Boolean = false
 )

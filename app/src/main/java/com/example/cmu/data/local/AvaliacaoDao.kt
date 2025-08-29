@@ -15,4 +15,10 @@ interface AvaliacaoDao {
 
     @Query("SELECT * FROM avaliacoes ORDER BY timestamp DESC")
     suspend fun listarHistorico(): List<AvaliacaoEntity>
+
+    @Query("SELECT * FROM avaliacoes WHERE synced = 0")
+    suspend fun getUnsynced(): List<AvaliacaoEntity>
+
+    @Query("UPDATE avaliacoes SET synced = 1 WHERE id = :id")
+    suspend fun markSynced(id: Int)
 }
