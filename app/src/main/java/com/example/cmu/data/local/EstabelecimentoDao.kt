@@ -10,7 +10,7 @@ interface EstabelecimentoDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun inserirEstabelecimento(estabelecimento: EstabelecimentoEntity)
 
-    @Query("SELECT * FROM estabelecimentos ORDER BY pontuacaoMedia DESC")
+    @Query("SELECT * FROM estabelecimentos")
     suspend fun listarEstabelecimentos(): List<EstabelecimentoEntity>
 
     @Query("SELECT * FROM estabelecimentos WHERE id = :id LIMIT 1")

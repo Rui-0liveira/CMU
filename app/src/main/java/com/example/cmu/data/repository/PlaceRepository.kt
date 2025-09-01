@@ -1,6 +1,5 @@
 package com.example.cmu.data.local
 
-
 import com.example.cmu.data.remote.RetrofitInstance
 import kotlinx.coroutines.flow.Flow
 
@@ -9,19 +8,23 @@ class PlaceRepository(private val dao: PlaceDao) {
     fun getPlaces(): Flow<List<PlaceEntity>> = dao.getAllPlaces()
 
     suspend fun fetchAndSavePlaces(apiKey: String) {
-        val response = RetrofitInstance.api.searchPlaces(
-            categories = "catering.cafe",
-            filter = "circle:-8.61,41.15,1000", // Porto, raio 1km
-            apiKey = apiKey
+        val response = RetrofitInstance.api.searchNearby(
+            location = "41.1579,-8.6291", // Porto
+            radius = 1000,
+            type = "restaurant",
+            key = apiKey
         )
-        val entities = response.features.map {
-            PlaceEntity(
-                name = it.properties.name,
-                address = it.properties.address_line1,
-                lat = it.geometry.coordinates[1],
-                lon = it.geometry.coordinates[0]
-            )
+
+        if (response.status == "OK") {
+            val entities = response.results.map {
+                PlaceEntity(
+                    name = it.name,
+                    address = it.vicinity,
+                    lat = it.geometry.location.lat,
+                    lon = it.geometry.location.lng
+                )
+            }
+            dao.insertPlaces(entities)
         }
-        dao.insertPlaces(entities)
     }
 }

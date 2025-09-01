@@ -5,11 +5,11 @@ import retrofit2.http.GET
 import retrofit2.http.Query
 
 interface ApiService {
-    @GET("v2/places")
-    suspend fun searchPlaces(
-        @Query("categories") categories: String,
-        @Query("filter") filter: String, // ex: "circle:-8.61,41.15,500"
-        @Query("limit") limit: Int = 20,
-        @Query("apiKey") apiKey: String
+    @GET("maps/api/place/nearbysearch/json")
+    suspend fun searchNearby(
+        @Query("location") location: String,   // "41.1579,-8.6291"
+        @Query("radius") radius: Int,         // em metros
+        @Query("type") type: String,          // "restaurant", "cafe", etc.
+        @Query("key") key: String
     ): PlacesResponse
 }

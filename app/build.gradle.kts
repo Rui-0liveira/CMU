@@ -21,6 +21,8 @@ android {
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+
+
     }
 
     buildTypes {
@@ -94,5 +96,8 @@ dependencies {
     implementation("androidx.compose.foundation:foundation:1.7.4")
     implementation("androidx.compose.ui:ui-tooling-preview:1.7.4")
     debugImplementation("androidx.compose.ui:ui-tooling:1.7.4")
+
+    // Google Places API
+    implementation("com.google.android.libraries.places:places:3.5.0")
 
 }

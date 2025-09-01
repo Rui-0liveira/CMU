@@ -1,29 +1,21 @@
 package com.example.cmu.data.remote.models
 
 data class PlacesResponse(
-    val features: List<PlaceFeature>
+    val results: List<PlaceResult>,
+    val status: String
 )
 
-data class PlaceFeature(
-    val properties: PlaceProperties,
+data class PlaceResult(
+    val name: String,
+    val vicinity: String?,  // endereço simplificado
     val geometry: Geometry
 )
 
-data class PlaceProperties(
-    val name: String?,
-    val address_line1: String?,
-    val address_line2: String?,
-    val country: String?,
-    val city: String?,
-    val postcode: String?,
-    val datasource: Datasource?
-)
-
 data class Geometry(
-    val type: String,
-    val coordinates: List<Double> // [lon, lat]
+    val location: Location
 )
 
-data class Datasource(
-    val raw: Map<String, Any>?
+data class Location(
+    val lat: Double,
+    val lng: Double
 )
