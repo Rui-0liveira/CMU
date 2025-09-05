@@ -6,7 +6,7 @@ import androidx.activity.compose.setContent
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.navigation.compose.rememberNavController
-import com.example.cmu.ui.navigation.AppNavGraph
+import com.example.cmu.data.ui.navigation.AppNavGraph
 import com.google.android.libraries.places.api.Places
 
 

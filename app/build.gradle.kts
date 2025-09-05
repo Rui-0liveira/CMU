@@ -63,8 +63,8 @@ dependencies {
     //firebase
     implementation(platform("com.google.firebase:firebase-bom:34.1.0"))
     implementation("com.google.firebase:firebase-analytics")
-    implementation("com.google.firebase:firebase-auth")
-    implementation("com.google.firebase:firebase-firestore")
+    implementation ("com.google.firebase:firebase-auth-ktx:21.2.0")
+    implementation("com.google.firebase:firebase-firestore-ktx:24.4.4")
 
     //room
     implementation("androidx.room:room-runtime:2.6.1")

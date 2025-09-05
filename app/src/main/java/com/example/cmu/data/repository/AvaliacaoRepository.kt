@@ -19,9 +19,9 @@ class AvaliacaoRepository(private val dao: AvaliacaoDao) {
             // Enviar para Firebase
             val data = hashMapOf(
                 "estabelecimentoId" to avaliacao.estabelecimentoId,
-                "utilizador" to avaliacao.utilizador,
                 "estrelas" to avaliacao.estrelas,
                 "comentario" to avaliacao.comentario,
+                "utilizador" to avaliacao.utilizador,
                 "fotoPath" to avaliacao.fotoPath,
                 "timestamp" to avaliacao.timestamp
             )
@@ -72,9 +72,9 @@ class AvaliacaoRepository(private val dao: AvaliacaoDao) {
         for (a in unsynced) {
             val data = hashMapOf(
                 "estabelecimentoId" to a.estabelecimentoId,
-                "utilizador" to a.utilizador,
                 "estrelas" to a.estrelas,
                 "comentario" to a.comentario,
+                "utilizador" to a.utilizador,
                 "fotoPath" to a.fotoPath,
                 "timestamp" to a.timestamp
             )

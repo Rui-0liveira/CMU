@@ -1,4 +1,4 @@
-package com.example.cmu.ui.screens
+package com.example.cmu.data.ui.screens
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
@@ -16,7 +16,7 @@ import com.example.cmu.data.local.PlaceEntity
 import com.example.cmu.data.local.PlaceRepository
 import com.example.cmu.data.local.PlaceViewModel
 import com.example.cmu.data.viewmodel.PlaceViewModelFactory
-import com.example.cmu.ui.navigation.Screen
+import com.example.cmu.data.ui.navigation.Screen
 import com.example.cmu.R
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -42,7 +42,7 @@ fun PlaceListScreen(navController: NavController) {
                     .fillMaxWidth()
                     .padding(vertical = 4.dp)
                     .clickable {
-                        navController.navigate("placeDetail/${place.id}")
+                        navController.navigate(Screen.PlaceDetail.createRoute(place.id))
                     },
                 elevation = CardDefaults.cardElevation(defaultElevation = 4.dp)
             ) {
@@ -51,22 +51,6 @@ fun PlaceListScreen(navController: NavController) {
                     place.address?.let { Text(text = it, style = MaterialTheme.typography.bodyMedium) }
                 }
             }
-        }
-    }
-}
-
-
-@Composable
-fun PlaceItem(place: PlaceEntity, onClick: () -> Unit) {
-    Card(
-        modifier = Modifier
-            .padding(8.dp)
-            .fillMaxWidth()
-            .clickable { onClick() }
-    ) {
-        Column(modifier = Modifier.padding(16.dp)) {
-            place.name?.let { Text(text = it, style = MaterialTheme.typography.titleMedium) }
-            place.address?.let { Text(text = it, style = MaterialTheme.typography.bodyMedium) }
         }
     }
 }
