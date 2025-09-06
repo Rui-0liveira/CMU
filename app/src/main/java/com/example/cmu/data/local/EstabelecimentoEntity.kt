@@ -5,10 +5,12 @@ import androidx.room.PrimaryKey
 
 @Entity(tableName = "estabelecimentos")
 data class EstabelecimentoEntity(
-    @PrimaryKey(autoGenerate = true) val id: Int = 0,
+    @PrimaryKey val placeId: String, // id vindo da API (ou gerado)
     val nome: String,
-    val latitude: Double,
-    val longitude: Double,
-    val telefone: String? = null,
-    val pontuacaoMedia: Double = 0.0
+    val endereco: String?,
+    val telefone: String?,
+    val lat: Double,
+    val lng: Double,
+    val mediaPontuacao: Double = 0.0,
+    val totalAvaliacoes: Int = 0
 )

@@ -7,6 +7,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import com.example.cmu.data.ui.navigation.Screen
 import com.google.firebase.auth.FirebaseAuth
 
 @Composable
@@ -15,18 +16,33 @@ fun HomeScreen(navController: NavController) {
     val user = auth.currentUser
 
     Column(
-        modifier = Modifier.fillMaxSize().padding(16.dp),
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(16.dp),
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         if (user != null) {
-            //navegar para a lista de estabelecimentos
-            navController.navigate("place_list")
+            Text("Bem-vindo, ${user.email ?: "Utilizador"}")
+
+            Spacer(modifier = Modifier.height(20.dp))
+
+            Button(onClick = { navController.navigate(Screen.Map.route) }) {
+                Text("Ver Mapa")
+            }
+
             Spacer(modifier = Modifier.height(12.dp))
+
+            Button(onClick = { navController.navigate(Screen.PlaceList.route) }) {
+                Text("Ver Lista de Estabelecimentos")
+            }
+
+            Spacer(modifier = Modifier.height(12.dp))
+
             Button(onClick = {
                 auth.signOut()
-                navController.navigate("login") {
-                    popUpTo("home") { inclusive = true }
+                navController.navigate(Screen.Login.route) {
+                    popUpTo(Screen.Home.route) { inclusive = true }
                 }
             }) {
                 Text("Logout")
@@ -34,13 +50,14 @@ fun HomeScreen(navController: NavController) {
         } else {
             Text("Ainda não tem sessão iniciada")
             Spacer(modifier = Modifier.height(12.dp))
-            Button(onClick = { navController.navigate("login") }) {
+            Button(onClick = { navController.navigate(Screen.Login.route) }) {
                 Text("Login")
             }
             Spacer(modifier = Modifier.height(8.dp))
-            Button(onClick = { navController.navigate("register") }) {
+            Button(onClick = { navController.navigate(Screen.Register.route) }) {
                 Text("Registar")
             }
         }
     }
 }
+

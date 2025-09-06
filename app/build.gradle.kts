@@ -100,4 +100,12 @@ dependencies {
     // Google Places API
     implementation("com.google.android.libraries.places:places:3.5.0")
 
+    //Google Maps Compose
+    implementation("com.google.maps.android:maps-compose:2.11.3")
+    implementation("com.google.android.gms:play-services-maps:18.1.0")
+
+    // Kotlin coroutines + lifecycle
+    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.6.1")
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.1")
+
 }
